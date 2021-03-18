@@ -1,4 +1,4 @@
-<?php // UTexas YEC Scholarship Finderr - CPT
+<?php // UTexas YEC Scholarship Finder - CPT
 
 /**
  *

@@ -1,4 +1,4 @@
-<?php // UTexas YEC Scholarship Finderr - Save Post
+<?php // UTexas YEC Scholarship Finder - Save Post
 
 /**
  *
