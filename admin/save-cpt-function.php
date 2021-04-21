@@ -1,5 +1,12 @@
 <?php // UTexas YEC Scholarship Finder - Save Post
 
+// disable direct file access
+if ( ! defined( 'ABSPATH' ) ) {
+
+	exit;
+
+}
+
 /**
  *
  * Adds Custom Save Post Function

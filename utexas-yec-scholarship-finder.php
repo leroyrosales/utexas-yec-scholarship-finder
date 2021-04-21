@@ -5,7 +5,7 @@ Description:  UTexas plugin add Scholarships CPT and React search script.
 Author:       Division of Diversity and Community Engagement
 Author URI:  https://diversity.utexas.edu
 Version:      1.0
-Text Domain:  utexa-yec-scholarship-finder
+Text Domain:  utexas-yec-scholarship-finder
 License:      GPL v2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.txt
 */
@@ -26,3 +26,7 @@ if ( is_admin() ) {
 	require_once UT_YEC_SCHOLARSHIP_FINDER . 'admin/save-cpt-function.php';
 
 }
+
+define( 'UT_YEC_SCHOLARSHIP_FINDER_ASSET_MANIFEST', UT_YEC_SCHOLARSHIP_FINDER . '/react-app/build/asset-manifest.json' );
+
+require_once UT_YEC_SCHOLARSHIP_FINDER . 'admin/enqueue.php';

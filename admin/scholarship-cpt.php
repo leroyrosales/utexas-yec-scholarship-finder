@@ -1,5 +1,12 @@
 <?php // UTexas YEC Scholarship Finder - CPT
 
+// disable direct file access
+if ( ! defined( 'ABSPATH' ) ) {
+
+	exit;
+
+}
+
 /**
  *
  * Adds Scholarships CPT
