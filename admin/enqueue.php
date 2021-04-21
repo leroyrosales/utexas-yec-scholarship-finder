@@ -1,7 +1,12 @@
 <?php
 // This file enqueues scripts and styles
 
-defined( 'ABSPATH' ) or die( 'Direct script access disallowed.' );
+// disable direct file access
+if ( ! defined( 'ABSPATH' ) ) {
+
+	exit;
+
+}
 
 add_action( 'init', function() {
 
@@ -18,7 +23,7 @@ add_action( 'init', function() {
       wp_enqueue_style( 'yec', get_site_url() . $asset_manifest[ 'main.css' ] );
     }
 
-    wp_enqueue_script( 'yec-runtime', get_site_url() . $asset_manifest[ 'runtime~main.js' ], array(), null, true );
+    wp_enqueue_script( 'yec-runtime', get_site_url() . $asset_manifest[ 'runtime-main.js' ], array(), null, true );
 
     wp_enqueue_script( 'yec-main', get_site_url() . $asset_manifest[ 'main.js' ], array('yec-runtime'), null, true );
 
