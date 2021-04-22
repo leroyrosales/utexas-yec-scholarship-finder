@@ -1,7 +1,7 @@
 <?php
 // This file enqueues a shortcode.
 
-// disable direct file access
+// Disable direct file access
 if ( ! defined( 'ABSPATH' ) ) {
 
 	exit;
