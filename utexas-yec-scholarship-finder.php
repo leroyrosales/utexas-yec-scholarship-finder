@@ -31,7 +31,7 @@ if ( is_admin() ) {
 
 define( 'UT_YEC_SCHOLARSHIP_FINDER_ASSET_MANIFEST', UT_YEC_SCHOLARSHIP_FINDER . '/react-app/build/asset-manifest.json' );
 
-require_once UT_YEC_SCHOLARSHIP_FINDER . 'admin/enqueue.php';
+require_once UT_YEC_SCHOLARSHIP_FINDER . 'frontend/enqueue.php';
 require_once UT_YEC_SCHOLARSHIP_FINDER . 'frontend/shortcode.php';
 
 
