@@ -31,8 +31,13 @@ add_action( 'init', function () {
                 'not_found'          => __( 'No scholarships found' ),
                 'not_found_in_trash' => __( 'No scholarships found in the Trash' ),
             ),
-                'public'      => true,
-                'has_archive' => true,
+                'public'      => false,
+                'publicly_queryable' => true,
+                'show_ui' => true,
+                'exclude_from_search' => true,
+                'has_archive' => false,
+                'show_in_nav_menus' => false,
+                'rewrite' => false,
         )
     );
 
