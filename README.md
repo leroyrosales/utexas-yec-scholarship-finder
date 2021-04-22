@@ -13,5 +13,24 @@ Adds a custom post type called \'Scholarships\' which saves all post data to a d
 
 Download this repo as a zip and unzip int your `wp-content/plugins` folder, or `git clone` into the same directory.
 
+== Filters ==
+
+Sample filter for `functions.php`:
+
+```php
+add_filter(
+    'utexas_yec_scholarship_fields',
+	function( $posts ) {
+
+	  $posts['title']  = 'value to input';
+	  $posts['excerpt']  = 'this is an excerpt';
+
+	  return $posts;
+	},
+	10,
+	2
+);
+```
+
 == Changelog ==
 - Add core Scholarship CPT and filters to manipulate saved post data
