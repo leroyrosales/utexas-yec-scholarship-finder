@@ -7,12 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 }
 
-/**
- *
- * Adds Custom Save Post Function
- *
- */
-
+// Adds Custom Save Post Function
 add_action( 'save_post_utexas_scholarships', function() {
 
     $args = array(
@@ -29,9 +24,21 @@ add_action( 'save_post_utexas_scholarships', function() {
             'utexas_yec_scholarship_fields',
             array(
                 'title' => get_the_title(),
-                'author' => get_the_author(),
+                'information' => get_field('information'),
+                'deadline' => get_field('deadline'),
+                'amount' => get_field('amount'),
+                'no_of_awards' => get_field('no_of_awards'),
+                'website' => get_field('website'),
+                'application_online_or_paper' => get_field('application_online_or_paper'),
+                'essays' => get_field('essays'),
+                'letters_of_recommendation' => get_field('letters_of_recommendation'),
+                'transcripts' => get_field('transcripts'),
+                'texas_resident' => get_field('texas_resident'),
+                'year_in_school' => get_field('year_in_school'),
+                'additional_info' => get_field('additional_info'),
             )
         );
+
     endwhile;
 
     wp_reset_query();
