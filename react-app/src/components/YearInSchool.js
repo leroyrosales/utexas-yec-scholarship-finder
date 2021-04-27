@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function YearInSchool({ handleChange, setYearInSchoolFilter, YEAR_FILTERS }) {
+export default function YearInSchool({ handleYearChange, setYearInSchoolFilter, YEAR_FILTERS }) {
 
     return (
         <>
-            <select onChange={handleChange}>
+            <select onChange={handleYearChange}>
                 {YEAR_FILTERS.map( year =>
                     <option>
                     {year}

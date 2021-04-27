@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Scholarship from './components/Scholarship'
 import YearInSchool from './components/YearInSchool'
+import TexasResidency from './components/TexasResidency'
 
 const YEAR_IN_SCHOOL_MAP = {
   "All": () => true,
@@ -14,22 +15,35 @@ const YEAR_IN_SCHOOL_MAP = {
   "Graduate Students": scholarship => scholarship.year_in_school.includes( "graduate_students" )
 }
 
+const RESIDENCE_MAP = {
+  "All": () => true,
+  "Yes": scholarship => scholarship.texas_resident.includes( "yes" ),
+  "No": scholarship => scholarship.texas_resident.includes( "no" ),
+}
+
 // Get the 'keys' of our filter map object
 const YEAR_FILTERS = Object.keys(YEAR_IN_SCHOOL_MAP);
+const RESIDENCE_FILTERS = Object.keys(RESIDENCE_MAP);
 
 function App({ scholarships }) {
 
   const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
+  const [texasReisdenceFilter, setTexasResidenceFilter] = useState('All');
 
-  const scholarshipList = scholarships.filter( YEAR_IN_SCHOOL_MAP[yearInSchoolFilter] ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
+  const scholarshipList = scholarships.filter( YEAR_IN_SCHOOL_MAP[yearInSchoolFilter] ).filter( RESIDENCE_MAP[texasReisdenceFilter] ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
 
-  const handleChange = (e) => {
+  const handleYearChange = (e) => {
     setYearInSchoolFilter(e.target.value)
+  }
+
+  const handleResidenceChange = (e) => {
+    setTexasResidenceFilter(e.target.value)
   }
 
   return (
     <>
-      <YearInSchool YEAR_FILTERS={YEAR_FILTERS} handleChange={handleChange} setYearInSchoolFilter={setYearInSchoolFilter}/>
+      <YearInSchool YEAR_FILTERS={YEAR_FILTERS} handleYearChange={handleYearChange} setYearInSchoolFilter={setYearInSchoolFilter}/>
+      <TexasResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/>
       <div className="row">
         {scholarshipList}
       </div>
