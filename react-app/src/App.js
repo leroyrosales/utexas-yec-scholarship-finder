@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Scholarship from './components/Scholarship'
 import YearInSchool from './components/YearInSchool'
 import TexasResidency from './components/TexasResidency'
+
+import axios from 'axios';
 
 const YEAR_IN_SCHOOL_MAP = {
   "All": () => true,
@@ -39,6 +41,12 @@ function App({ scholarships }) {
   const handleResidenceChange = (e) => {
     setTexasResidenceFilter(e.target.value)
   }
+
+  useEffect(()=>{
+    console.log('effect')
+    axios.get('../data/data.json')
+      .then( res => console.log(res.data))
+  },[])
 
   return (
     <>

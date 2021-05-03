@@ -44,13 +44,13 @@ add_action( 'save_post_utexas_scholarships', function() {
     wp_reset_query();
     $data = json_encode($posts);
 
-    if (!is_dir(ABSPATH . '/wp-content/uploads/scholarships-data/')) {
+    if (!is_dir(ABSPATH . '/wp-content/build/data/')) {
         // If dir doesn't exist, make it
-        mkdir(ABSPATH . '/wp-content/uploads/scholarships-data/');
+        mkdir(ABSPATH . '/wp-content/build/data/');
     }
 
     // Creates a scholarships json file in the uploads folder
-    file_put_contents( ABSPATH . '/wp-content/uploads/scholarships-data/data.json', $data);
+    file_put_contents( ABSPATH . '/wp-content/build/data/data.json', $data);
 
 });
 

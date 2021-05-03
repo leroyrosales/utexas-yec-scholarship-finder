@@ -8,7 +8,6 @@ export default function Scholarship({ scholarship }) {
         return string.replace("_"," ")
     }
 
-    console.log(scholarship)
     return (
         <div className="col-6 col-md-4" data-year-in-hs="{ scholarship.year_in_school }">
             <h3>{ scholarship.title }</h3>
