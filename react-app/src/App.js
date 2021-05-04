@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Scholarship from './components/Scholarship'
 import YearInSchool from './components/YearInSchool'
 import TexasResidency from './components/TexasResidency'
-
-import axios from 'axios';
 
 const YEAR_IN_SCHOOL_MAP = {
   "All": () => true,
@@ -27,8 +25,6 @@ const RESIDENCE_MAP = {
 const YEAR_FILTERS = Object.keys(YEAR_IN_SCHOOL_MAP);
 const RESIDENCE_FILTERS = Object.keys(RESIDENCE_MAP);
 
-const DATA_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_DATA_URL : '';
-
 function App({ scholarships }) {
 
   const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
@@ -43,11 +39,6 @@ function App({ scholarships }) {
   const handleResidenceChange = (e) => {
     setTexasResidenceFilter(e.target.value)
   }
-
-  useEffect(()=>{
-    axios.get(`${DATA_URL}/data/data.json`)
-      .then( res => console.log(res.data))
-  },[])
 
   return (
     <>

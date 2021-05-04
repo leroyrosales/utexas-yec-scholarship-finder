@@ -4,14 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import data from "./data";
+import axios from 'axios';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App scholarships={data} />
-  </React.StrictMode>,
-  document.getElementById('yec-root')
-);
+const DATA_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '';
+
+axios.get(`${DATA_URL}/data/data.json`)
+  .then( res =>
+    ReactDOM.render(
+      <React.StrictMode>
+        <App scholarships={res.data} />
+      </React.StrictMode>,
+      document.getElementById('yec-root')
+    )
+  )
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
