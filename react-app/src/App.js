@@ -27,6 +27,8 @@ const RESIDENCE_MAP = {
 const YEAR_FILTERS = Object.keys(YEAR_IN_SCHOOL_MAP);
 const RESIDENCE_FILTERS = Object.keys(RESIDENCE_MAP);
 
+const DATA_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_DATA_URL : '';
+
 function App({ scholarships }) {
 
   const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
@@ -43,8 +45,7 @@ function App({ scholarships }) {
   }
 
   useEffect(()=>{
-    console.log('effect')
-    axios.get('../data/data.json')
+    axios.get(`${DATA_URL}/data/data.json`)
       .then( res => console.log(res.data))
   },[])
 
