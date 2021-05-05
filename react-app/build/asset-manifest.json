@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.9b8b08d0.chunk.js",
+    "main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.9b8b08d0.chunk.js.map",
+    "runtime-main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.cdee4a56.js",
+    "runtime-main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.cdee4a56.js.map",
+    "static/css/2.150d169a.chunk.css": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/2.150d169a.chunk.css",
+    "static/js/2.65bebea0.chunk.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.65bebea0.chunk.js",
+    "static/js/2.65bebea0.chunk.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.65bebea0.chunk.js.map",
+    "static/js/3.e170a6cf.chunk.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/3.e170a6cf.chunk.js",
+    "static/js/3.e170a6cf.chunk.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/3.e170a6cf.chunk.js.map",
+    "index.html": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.8c8b27cf.chunk.css.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.65bebea0.chunk.js.LICENSE.txt": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.65bebea0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cdee4a56.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.65bebea0.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.9b8b08d0.chunk.js"
+  ]
+}

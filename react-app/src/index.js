@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import axios from 'axios';
 
-const DATA_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '';
+const DATA_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/';
 
 axios.get(`${DATA_URL}/data/data.json`)
   .then( res =>
