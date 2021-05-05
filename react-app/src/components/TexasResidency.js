@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
 
-export default function YearInSchool({ handleResidenceChange, setTexasResidenceFilter, RESIDENCE_FILTERS }) {
+export default function YearInSchool({ handleResidenceChange, RESIDENCE_FILTERS }) {
 
     return (
         <>
