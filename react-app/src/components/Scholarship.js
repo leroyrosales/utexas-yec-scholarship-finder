@@ -16,15 +16,12 @@ export default function Scholarship({ scholarship }) {
                 <p className="mb-3">Award amount: ${ scholarship.amount }</p> : null
             }
             <Accordion>
-                <div>
-                    <div>
-                        <Accordion.Toggle as={Card.Header} eventKey="0">
-                            More Info
-                        </Accordion.Toggle>
-                    </div>
+                <>
+                    <Accordion.Toggle as={Card.Header} eventKey="0">
+                        More Info
+                    </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
-                        <div>
-                            <hr/>
+                        <>
                             <div dangerouslySetInnerHTML={{ __html: scholarship.information }}></div>
                             <ul>
                             { scholarship.deadline ?
@@ -50,12 +47,12 @@ export default function Scholarship({ scholarship }) {
                             }
                             <li>Site: <a target="_blank" href="{ scholarship.website }" rel="noindex, nofollow">{ scholarship.website }</a></li>
                             </ul>
-                            { scholarship.year_in_school.map((year, index) => (
+                            {/* { scholarship.year_in_school.map((year, index) => (
                                 <div key={index}>{ cleanUpString(year) }</div>
-                            )) }
-                        </div>
+                            )) } */}
+                        </>
                     </Accordion.Collapse>
-                </div>
+                </>
             </Accordion>
         </div>
     )

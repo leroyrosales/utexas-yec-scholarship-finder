@@ -5,16 +5,14 @@ export default function RequiresResidency({ handleResidenceChange, RESIDENCE_FIL
 
     return (
         <>
-            <Form>
-                <Form.Label>Requires residency?</Form.Label>
-                <Form.Control as="select" onChange={handleResidenceChange}>
-                    {RESIDENCE_FILTERS.map( residence =>
-                        <option>
-                        { residence }
-                        </option>
-                    )}
-                </Form.Control>
-            </Form>
+            <Form.Label>Requires residency?</Form.Label>
+            <Form.Control as="select" onChange={handleResidenceChange} className="mb-3">
+                {RESIDENCE_FILTERS.map( residence =>
+                    <option>
+                    { residence }
+                    </option>
+                )}
+            </Form.Control>
         </>
     )
 }
