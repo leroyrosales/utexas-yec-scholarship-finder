@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
 
-export default function EssayRequirements({ handleEssayChange, ESSAY_FILTERS }) {
+export default function RequiresEssay({ handleEssayChange, ESSAY_FILTERS }) {
 
     return (
         <>

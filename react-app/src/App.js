@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import './App.css';
 import Scholarship from './components/Scholarship'
 import YearInSchool from './components/YearInSchool'
-import TexasResidency from './components/TexasResidency'
-import EssayRequirements from './components/EssayRequirements'
+import RequiresResidency from './components/RequiresResidency'
+import RequiresEssay from './components/RequiresEssay'
 
 // const YEAR_IN_SCHOOL_MAP = {
 //   "All": () => true,
@@ -59,8 +59,9 @@ function App({ scholarships }) {
       {/* <YearInSchool YEAR_FILTERS={YEAR_FILTERS} handleYearChange={handleYearChange} setYearInSchoolFilter={setYearInSchoolFilter}/> */}
       <div className="col-12 col-md-3">
         <Form>
-          <TexasResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/>
-          <EssayRequirements ESSAY_FILTERS={ESSAY_FILTERS} handleEssayChange={handleEssayChange} setEssayFilter={setEssayFilter}/>
+          <p className="h5 font-weight-bold text-uppercase mb-3">FILTER BY</p>
+          <RequiresResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/>
+          <RequiresEssay ESSAY_FILTERS={ESSAY_FILTERS} handleEssayChange={handleEssayChange} setEssayFilter={setEssayFilter}/>
         </Form>
       </div>
       <div className="col-12 col-md">
