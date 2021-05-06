@@ -35,7 +35,6 @@ export default function Scholarship({ scholarship  }) {
     return (
         <div className="col-6 col-md-4" data-year-in-hs="{ scholarship.year_in_school }">
             <h3>{ scholarship.title }</h3>
-            <hr/>
             { scholarship.amount ?
                 <p className="mb-3">Award amount: ${ scholarship.amount }</p> : null
             }
@@ -44,32 +43,38 @@ export default function Scholarship({ scholarship  }) {
                     <ContextAwareToggle eventKey="0">
                         More Info
                     </ContextAwareToggle>
-                    <Accordion.Collapse eventKey="0" className="mt-3">
+                    <Accordion.Collapse eventKey="0" className="p-3">
                         <>
                             <div dangerouslySetInnerHTML={{ __html: scholarship.information }}></div>
                             <ul>
                             { scholarship.deadline ?
-                                <li>Deadline: { scholarship.deadline }</li> : null
+                                <li><strong>Deadline:</strong> { scholarship.deadline }</li> : null
                             }
                             { scholarship.application_online_or_paper ?
-                                <li>Application (online or paper): { scholarship.application_online_or_paper }</li> : null
+                                <li><strong>Application (online or paper):</strong> { scholarship.application_online_or_paper }</li> : null
                             }
                             { scholarship.essays ?
-                                <li>Essay required?: { scholarship.essays }</li> : null
+                                <li><strong>Essay required?:</strong> { scholarship.essays }</li> : null
                             }
                             { scholarship.letters_of_recommendation ?
-                                <li>Letter of recommendation?: { scholarship.letters_of_recommendation }</li> : null
+                                <li><strong>Letter of recommendation?:</strong> { scholarship.letters_of_recommendation }</li> : null
                             }
                             { scholarship.no_of_awards ?
-                                <li>Number of awards offered: { scholarship.no_of_awards }</li> : null
+                                <li><strong>Number of awards offered:</strong> { scholarship.no_of_awards }</li> : null
                             }
                             { scholarship.texas_resident ?
-                                <li>Requires Texas residency?: { scholarship.texas_resident }</li> : null
+                                <li><strong>Requires Texas residency?:</strong> { scholarship.texas_resident }</li> : null
                             }
                             { scholarship.transcripts ?
-                                <li>Requires transcript?: { scholarship.transcripts }</li> : null
+                                <li><strong>Requires transcript?:</strong> { scholarship.transcripts }</li> : null
                             }
-                            <li>Site: <a target="_blank" href="{ scholarship.website }" rel="noindex, nofollow">{ scholarship.website }</a></li>
+                            { scholarship.website ?
+                                <li><strong>Site:</strong> <a target="_blank" href="{ scholarship.website }" rel="noindex, nofollow">{ scholarship.website }</a></li> : null
+                            }
+                            { scholarship.additional_info ?
+                                <div className="mt-3" dangerouslySetInnerHTML={{ __html: scholarship.additional_info }}></div> : null
+                            }
+
                             </ul>
                             {/* { scholarship.year_in_school.map((year, index) => (
                                 <div key={index}>{ cleanUpString(year) }</div>
