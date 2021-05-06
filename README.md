@@ -1,7 +1,7 @@
 === UTexas YEC Scholarship Finder ===
 
 Contributors: Leroy Rosales, Division of Diversity and Community Engagement
-Tested up to: 5.6
+Tested up to: 5.7.1
 
 UTexas plugin add Scholarships CPT and React search script.
 
@@ -31,6 +31,10 @@ add_filter(
 	2
 );
 ```
+
+== Shortcode ==
+
+This plugins adds an executable shortcode which renders the search filtering form on the frontend. Use [yec_scholarship_finder] to display the form.
 
 == Changelog ==
 - Add core Scholarship CPT and filters to manipulate saved post data

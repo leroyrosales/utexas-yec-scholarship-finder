@@ -23,7 +23,7 @@ add_action( 'save_post_utexas_scholarships', function() {
         $posts[] = apply_filters(
             'utexas_yec_scholarship_fields',
             array(
-                'title' => get_the_title(),
+                'title' => html_entity_decode(get_the_title($post->ID),ENT_QUOTES,'UTF-8'),
                 'information' => get_field('information'),
                 'deadline' => get_field('deadline'),
                 'amount' => get_field('amount'),

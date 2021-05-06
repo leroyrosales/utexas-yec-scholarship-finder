@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.accordion .card-header {
+  background-color: #bf5700;
+  color: #fff;
+  font-weight: bold;
+  border-bottom: none;
+  position: relative;
+}
+
+.accordion .card-header:after {
+  position: absolute;
+  content: "\002B";
+  right: 1rem;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+
+.accordion .card-header.openedStyle {
+  background-color: #fbfbf9;
+  color: #495057;
+}
+
+.accordion .card-header.openedStyle:after {
+  transform: rotate(45deg);
+}
+
+.accordion .card-header:first-child {
+  border-radius: 0!important;
+}
+
+.accordion .collapse.show {
+  background-color: #fbfbf9;
+}
