@@ -41,3 +41,7 @@ code {
 .accordion .card-header:first-child {
   border-radius: 0!important;
 }
+
+.accordion .collapse.show {
+  background-color: #fbfbf9;
+}
