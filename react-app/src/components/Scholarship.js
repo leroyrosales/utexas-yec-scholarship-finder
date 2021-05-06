@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
+import AccordionContext from 'react-bootstrap/AccordionContext';
 
-export default function Scholarship({ scholarship }) {
+
+function ContextAwareToggle({ children, eventKey, callback }) {
+    const currentEventKey = useContext(AccordionContext);
+
+    const decoratedOnClick = useAccordionToggle(
+      eventKey,
+      () => callback && callback(eventKey),
+    );
+
+    const isCurrentEventKey = currentEventKey === eventKey;
+
+    return (
+      <Accordion.Toggle
+        as={Card.Header}
+        style={{ backgroundColor: isCurrentEventKey ? 'pink' : 'lavender' }}
+        onClick={decoratedOnClick}
+      >
+        {children}
+      </Accordion.Toggle>
+    );
+}
+
+export default function Scholarship({ scholarship  }) {
 
     const cleanUpString = (string) => {
         return string.replace("_"," ")
@@ -17,9 +41,9 @@ export default function Scholarship({ scholarship }) {
             }
             <Accordion>
                 <>
-                    <Accordion.Toggle as={Card.Header} eventKey="0">
+                    <ContextAwareToggle eventKey="0">
                         More Info
-                    </Accordion.Toggle>
+                    </ContextAwareToggle>
                     <Accordion.Collapse eventKey="0">
                         <>
                             <div dangerouslySetInnerHTML={{ __html: scholarship.information }}></div>
