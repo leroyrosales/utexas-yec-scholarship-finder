@@ -18,7 +18,7 @@ function ContextAwareToggle({ children, eventKey, callback }) {
     return (
       <Accordion.Toggle
         as={Card.Header}
-        style={{ backgroundColor: isCurrentEventKey ? 'pink' : 'lavender' }}
+        className={('defaultStyle', {'openedStyle': isCurrentEventKey})}
         onClick={decoratedOnClick}
       >
         {children}
@@ -44,7 +44,7 @@ export default function Scholarship({ scholarship  }) {
                     <ContextAwareToggle eventKey="0">
                         More Info
                     </ContextAwareToggle>
-                    <Accordion.Collapse eventKey="0">
+                    <Accordion.Collapse eventKey="0" className="mt-3">
                         <>
                             <div dangerouslySetInnerHTML={{ __html: scholarship.information }}></div>
                             <ul>
