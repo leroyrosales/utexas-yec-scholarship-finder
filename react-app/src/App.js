@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Form from 'react-bootstrap/Form';
 import './App.css';
 import Scholarship from './components/Scholarship'
@@ -68,23 +68,25 @@ function App({ scholarships }) {
     setTranscriptFilter(e.target.value)
   }
 
+  const resetAll = (e) => {
+    e.preventDefault()
+    setTranscriptFilter('All')
+  }
+
   return (
-    <div className="row">
+    <>
       {/* <YearInSchool YEAR_FILTERS={YEAR_FILTERS} handleYearChange={handleYearChange} setYearInSchoolFilter={setYearInSchoolFilter}/> */}
-      <div className="col-12 col-md-3">
+      <section className="ut-scholarship--grid">
         <Form>
-          <p className="h5 font-weight-bold text-uppercase mb-3">FILTER BY</p>
+          <span style={{display: 'block'}}>FILTER BY</span>
           <RequiresResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/>
           <RequiresEssay ESSAY_FILTERS={ESSAY_FILTERS} handleEssayChange={handleEssayChange} setEssayFilter={setEssayFilter}/>
           <RequiresTranscript TRANSCRIPT_FILTERS={TRANSCRIPT_FILTERS} handleTranscriptChange={handleTranscriptChange} setTranscriptFilter={setTranscriptFilter}/>
+          <button onClick={resetAll}>Reset</button>
         </Form>
-      </div>
-      <div className="col-12 col-md">
-        <div className="row">
-          {scholarshipList}
-        </div>
-      </div>
-    </div>
+        {scholarshipList}
+      </section>
+    </>
   );
 }
 
