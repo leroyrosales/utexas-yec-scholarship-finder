@@ -4,10 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Select from 'react-select'
 import './App.css';
 import Scholarship from './components/Scholarship'
-import YearInSchool from './components/YearInSchool'
-
-import RequiresEssay from './components/RequiresEssay'
-import RequiresTranscript from './components/RequiresTranscript'
 
 // const YEAR_IN_SCHOOL_MAP = {
 //   "All": () => true,
@@ -20,50 +16,35 @@ import RequiresTranscript from './components/RequiresTranscript'
 // }
 
 const RESIDENCE_MAP = [
-  // "All": () => true,
-  // "Yes": scholarship => scholarship.texas_resident.includes( "yes" ),
-  // "No": scholarship => scholarship.texas_resident.includes( "no" ),
   { value: "yes", label: "Yes" },
   { value: "no", label: "No" },
 ]
 
-const ESSAY_MAP = {
-  "All": () => true,
-  "Yes": scholarship => scholarship.essays.includes( "yes" ),
-  "No": scholarship => scholarship.essays.includes( "no" ),
-}
+const ESSAY_MAP = [
+  { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+]
 
-const TRANSCRIPT_MAP = {
-  "All": () => true,
-  "Yes": scholarship => scholarship.transcripts.includes( "yes" ),
-  "No": scholarship => scholarship.transcripts.includes( "no" ),
-}
-
-// Get the 'keys' of our filter map object
-// const YEAR_FILTERS = Object.keys(YEAR_IN_SCHOOL_MAP);
-
-const ESSAY_FILTERS = Object.keys(ESSAY_MAP);
-const TRANSCRIPT_FILTERS = Object.keys(TRANSCRIPT_MAP);
+const TRANSCRIPT_MAP = [
+  { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+]
 
 
 function App({ scholarships }) {
 
   // const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
-  const [ residency, setResidency] = useState('');
-  const [essayFilter, setEssayFilter] = useState('All');
-  const [transcriptFilter, setTranscriptFilter] = useState('All');
+  const [ residency, setResidency] = useState();
+  const [ essay, setEssay ] = useState();
+  const [ transcript, setTranscript ] = useState();
 
-  console.log(scholarships)
-
-  const scholarshipList = scholarships.filter( scholarship => !residency ? scholarship : scholarship.texas_resident === residency.value ).filter( ESSAY_MAP[essayFilter] ).filter( TRANSCRIPT_MAP[transcriptFilter] ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
+  const scholarshipList = scholarships.filter( scholarship => !residency ? scholarship : scholarship.texas_resident === residency.value ).filter( scholarship => !essay ? scholarship : scholarship.essays === essay.value ).filter( scholarship => !transcript ? scholarship : scholarship.transcripts === transcript.value ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
 
   // const handleYearChange = (e) => {
   //   setYearInSchoolFilter(e.target.value)
   // }
 
   const handleResidenceChange = (value) => {
-    console.log(value)
-    // setTexasResidenceFilter(e.target.value)
     if(value != null) {
       setResidency(value)
     } else {
@@ -71,16 +52,27 @@ function App({ scholarships }) {
     }
   }
 
-  const handleEssayChange = (e) => {
-    setEssayFilter(e.target.value)
+  const handleEssayChange = (value) => {
+    if(value != null) {
+      setEssay(value)
+    } else {
+      setEssay(null)
+    }
   }
 
-  const handleTranscriptChange = (e) => {
-    setTranscriptFilter(e.target.value)
+  const handleTranscriptChange = (value) => {
+    if(value != null) {
+      setTranscript(value)
+    } else {
+      setTranscript(null)
+    }
   }
 
-  const resetAll = () => {
+  const resetAll = (e) => {
+    e.preventDefault()
     setResidency(null)
+    setEssay(null)
+    setTranscript(null)
     // setSearchQuery("")
   }
 
@@ -90,7 +82,7 @@ function App({ scholarships }) {
       <section className="ut-scholarship--grid">
         <Form>
           <span style={{display: 'block'}}>FILTER BY</span>
-          {/* <RequiresResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/> */}
+          <label htmlFor="residency">Residency status</label>
           <Select
             options={RESIDENCE_MAP}
             isClearable={true}
@@ -99,8 +91,24 @@ function App({ scholarships }) {
             value={residency}
             name="residency"
           />
-          <RequiresEssay ESSAY_FILTERS={ESSAY_FILTERS} handleEssayChange={handleEssayChange} setEssayFilter={setEssayFilter}/>
-          <RequiresTranscript TRANSCRIPT_FILTERS={TRANSCRIPT_FILTERS} handleTranscriptChange={handleTranscriptChange} setTranscriptFilter={setTranscriptFilter}/>
+          <label htmlFor="essay">essay status</label>
+          <Select
+            options={ESSAY_MAP}
+            isClearable={true}
+            placeholder="Is an essay required?"
+            onChange={value => handleEssayChange(value)}
+            value={essay}
+            name="essay"
+          />
+          <label htmlFor="transcript">transcript status</label>
+          <Select
+            options={TRANSCRIPT_MAP}
+            isClearable={true}
+            placeholder="Transcript required?"
+            onChange={value => handleTranscriptChange(value)}
+            value={transcript}
+            name="transcript"
+          />
           <button onClick={resetAll}>Reset</button>
         </Form>
         {scholarshipList}
