@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Hide the ACF admin menu item.
-// add_filter( 'acf/settings/show_admin', '__return_false' );
+add_filter( 'acf/settings/show_admin', '__return_false' );
 
 if( !function_exists('acf_add_local_field_group') ) return;
 
