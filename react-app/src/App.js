@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
 import Form from 'react-bootstrap/Form';
+import Select from 'react-select'
 import './App.css';
 import Scholarship from './components/Scholarship'
 import YearInSchool from './components/YearInSchool'
-import RequiresResidency from './components/RequiresResidency'
+
 import RequiresEssay from './components/RequiresEssay'
 import RequiresTranscript from './components/RequiresTranscript'
 
@@ -18,11 +19,13 @@ import RequiresTranscript from './components/RequiresTranscript'
 //   "Graduate Students": scholarship => scholarship.year_in_school.includes( "graduate_students" )
 // }
 
-const RESIDENCE_MAP = {
-  "All": () => true,
-  "Yes": scholarship => scholarship.texas_resident.includes( "yes" ),
-  "No": scholarship => scholarship.texas_resident.includes( "no" ),
-}
+const RESIDENCE_MAP = [
+  // "All": () => true,
+  // "Yes": scholarship => scholarship.texas_resident.includes( "yes" ),
+  // "No": scholarship => scholarship.texas_resident.includes( "no" ),
+  { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+]
 
 const ESSAY_MAP = {
   "All": () => true,
@@ -38,7 +41,7 @@ const TRANSCRIPT_MAP = {
 
 // Get the 'keys' of our filter map object
 // const YEAR_FILTERS = Object.keys(YEAR_IN_SCHOOL_MAP);
-const RESIDENCE_FILTERS = Object.keys(RESIDENCE_MAP);
+
 const ESSAY_FILTERS = Object.keys(ESSAY_MAP);
 const TRANSCRIPT_FILTERS = Object.keys(TRANSCRIPT_MAP);
 
@@ -46,18 +49,26 @@ const TRANSCRIPT_FILTERS = Object.keys(TRANSCRIPT_MAP);
 function App({ scholarships }) {
 
   // const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
-  const [texasReisdenceFilter, setTexasResidenceFilter] = useState('All');
+  const [ residency, setResidency] = useState('');
   const [essayFilter, setEssayFilter] = useState('All');
   const [transcriptFilter, setTranscriptFilter] = useState('All');
 
-  const scholarshipList = scholarships.filter( RESIDENCE_MAP[texasReisdenceFilter] ).filter( ESSAY_MAP[essayFilter] ).filter( TRANSCRIPT_MAP[transcriptFilter] ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
+  console.log(scholarships)
+
+  const scholarshipList = scholarships.filter( scholarship => !residency ? scholarship : scholarship.texas_resident === residency.value ).filter( ESSAY_MAP[essayFilter] ).filter( TRANSCRIPT_MAP[transcriptFilter] ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
 
   // const handleYearChange = (e) => {
   //   setYearInSchoolFilter(e.target.value)
   // }
 
-  const handleResidenceChange = (e) => {
-    setTexasResidenceFilter(e.target.value)
+  const handleResidenceChange = (value) => {
+    console.log(value)
+    // setTexasResidenceFilter(e.target.value)
+    if(value != null) {
+      setResidency(value)
+    } else {
+      setResidency(null)
+    }
   }
 
   const handleEssayChange = (e) => {
@@ -68,9 +79,9 @@ function App({ scholarships }) {
     setTranscriptFilter(e.target.value)
   }
 
-  const resetAll = (e) => {
-    e.preventDefault()
-    setTranscriptFilter('All')
+  const resetAll = () => {
+    setResidency(null)
+    // setSearchQuery("")
   }
 
   return (
@@ -79,7 +90,15 @@ function App({ scholarships }) {
       <section className="ut-scholarship--grid">
         <Form>
           <span style={{display: 'block'}}>FILTER BY</span>
-          <RequiresResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/>
+          {/* <RequiresResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/> */}
+          <Select
+            options={RESIDENCE_MAP}
+            isClearable={true}
+            placeholder="Select residency status"
+            onChange={value => handleResidenceChange(value)}
+            value={residency}
+            name="residency"
+          />
           <RequiresEssay ESSAY_FILTERS={ESSAY_FILTERS} handleEssayChange={handleEssayChange} setEssayFilter={setEssayFilter}/>
           <RequiresTranscript TRANSCRIPT_FILTERS={TRANSCRIPT_FILTERS} handleTranscriptChange={handleTranscriptChange} setTranscriptFilter={setTranscriptFilter}/>
           <button onClick={resetAll}>Reset</button>
