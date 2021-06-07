@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import Form from 'react-bootstrap/Form';
 import Select from 'react-select'
 import './App.css';
 import Scholarship from './components/Scholarship'
@@ -80,9 +79,8 @@ function App({ scholarships }) {
     <>
       {/* <YearInSchool YEAR_FILTERS={YEAR_FILTERS} handleYearChange={handleYearChange} setYearInSchoolFilter={setYearInSchoolFilter}/> */}
       <section className="ut-scholarship--grid">
-        <Form>
-          <span style={{display: 'block'}}>FILTER BY</span>
-          <label htmlFor="residency">Residency status</label>
+        <form className="ut-scholarships--grid-form">
+          <label htmlFor="residency">Residency</label>
           <Select
             options={RESIDENCE_MAP}
             isClearable={true}
@@ -91,7 +89,7 @@ function App({ scholarships }) {
             value={residency}
             name="residency"
           />
-          <label htmlFor="essay">essay status</label>
+          <label htmlFor="essay">Essay</label>
           <Select
             options={ESSAY_MAP}
             isClearable={true}
@@ -100,7 +98,7 @@ function App({ scholarships }) {
             value={essay}
             name="essay"
           />
-          <label htmlFor="transcript">transcript status</label>
+          <label htmlFor="transcript">Transript</label>
           <Select
             options={TRANSCRIPT_MAP}
             isClearable={true}
@@ -110,7 +108,7 @@ function App({ scholarships }) {
             name="transcript"
           />
           <button onClick={resetAll}>Reset</button>
-        </Form>
+        </form>
         {scholarshipList}
       </section>
     </>
