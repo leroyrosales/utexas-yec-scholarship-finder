@@ -43,6 +43,11 @@
   margin: .25rem 0 1rem 0;
 }
 
+.ut-scholarships--grid-form label ~ input {
+  margin: .25rem 0 1rem 0;
+  display: block;
+}
+
 .form-control {
   display: block;
   width: 100%;

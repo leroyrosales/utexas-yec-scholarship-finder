@@ -45,7 +45,7 @@ export default function Scholarship({ scholarship }) {
                   <a
                     target="_blank"
                     href={ scholarship.website }
-                    rel="noindex, nofollow"
+                    rel="noindex, nofollow, noreferrer"
                   ><br/>
                     {scholarship.website}
                   </a>
@@ -95,6 +95,8 @@ export default function Scholarship({ scholarship }) {
                 ></div>
               ) : null}
             </ul>
+            {String(scholarship.stem)}<br/>
+            {scholarship.keywords}
             {/* { scholarship.year_in_school.map((year, index) => (
                                 <div key={index}>{ cleanUpString(year) }</div>
                             )) } */}

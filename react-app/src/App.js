@@ -43,6 +43,8 @@ function App({ scholarships }) {
   //   setYearInSchoolFilter(e.target.value)
   // }
 
+  console.log(scholarships)
+
   const handleResidenceChange = (value) => {
     if(value != null) {
       setResidency(value)
@@ -106,6 +108,12 @@ function App({ scholarships }) {
             onChange={value => handleTranscriptChange(value)}
             value={transcript}
             name="transcript"
+          />
+          <label htmlFor="stem">Stem scholarship</label>
+          <input
+            type="checkbox"
+            id="stem"
+            value="stem"
           />
           <button onClick={resetAll}>Reset</button>
         </form>
