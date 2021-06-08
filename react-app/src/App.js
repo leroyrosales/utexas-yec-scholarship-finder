@@ -4,15 +4,12 @@ import Select from "react-select";
 import "./App.css";
 import Scholarship from "./components/Scholarship";
 
-// const YEAR_IN_SCHOOL_MAP = {
-//   "All": () => true,
-//   "Incoming Freshman": scholarship => scholarship.year_in_school.includes( "incoming_freshman" ),
-//   "Incoming Transfer": scholarship => scholarship.year_in_school.includes( "incoming_transfer" ),
-//   "Entering Transfer": scholarship => scholarship.year_in_school.includes( "entering_transfer" ),
-//   "Externally Selected": scholarship => scholarship.year_in_school.includes( "externally_selected" ),
-//   "Continuing Students": scholarship => scholarship.year_in_school.includes( "continuing_students" ),
-//   "Graduate Students": scholarship => scholarship.year_in_school.includes( "graduate_students" )
-// }
+const YEAR_IN_SCHOOL_MAP = [
+  { value: "9th", label: "9th grade" },
+  { value: "10th", label: "10th grade" },
+  { value: "11th", label: "11th grade" },
+  { value: "12th", label: "12th grade" },
+]
 
 const RESIDENCE_MAP = [
   { value: "yes", label: "Yes" },
@@ -30,10 +27,11 @@ const TRANSCRIPT_MAP = [
 ];
 
 function App({ scholarships }) {
-  // const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
+
   const [residency, setResidency] = useState();
   const [essay, setEssay] = useState();
   const [transcript, setTranscript] = useState();
+  const [year, setYear] = useState();
   const [stem, setStem] = useState(null);
 
   const scholarshipList = scholarships
@@ -49,13 +47,12 @@ function App({ scholarships }) {
     .filter((scholarship) =>
       !transcript ? scholarship : scholarship.transcripts === transcript.value
     )
+    .filter((scholarship) =>
+      !year ? scholarship : scholarship.year_in_school.includes( year.value )
+    )
     .map((scholarship, index) => (
       <Scholarship key={index} scholarship={scholarship} />
     ));
-
-  // const handleYearChange = (e) => {
-  //   setYearInSchoolFilter(e.target.value)
-  // }
 
   console.log(scholarships);
 
@@ -83,6 +80,14 @@ function App({ scholarships }) {
     }
   };
 
+  const handleYearChange = (value) => {
+    if (value != null) {
+      setYear(value);
+    } else {
+      setYear(null);
+    }
+  };
+
   const handleStemChange = (e) => {
     if(e.target.checked == true){
       setStem(true)
@@ -96,14 +101,14 @@ function App({ scholarships }) {
     setResidency(null);
     setEssay(null);
     setTranscript(null);
-    setStem(false);
+    setYear(null);
+    setStem(null);
     document.getElementById("stem").checked = false;
     // setSearchQuery("")
   };
 
   return (
     <>
-      {/* <YearInSchool YEAR_FILTERS={YEAR_FILTERS} handleYearChange={handleYearChange} setYearInSchoolFilter={setYearInSchoolFilter}/> */}
       <section className="ut-scholarship--grid">
         <form className="ut-scholarships--grid-form">
           <label htmlFor="residency">Residency</label>
@@ -132,6 +137,15 @@ function App({ scholarships }) {
             onChange={(value) => handleTranscriptChange(value)}
             value={transcript}
             name="transcript"
+          />
+          <label htmlFor="year">Year in School</label>
+          <Select
+            options={YEAR_IN_SCHOOL_MAP}
+            isClearable={true}
+            placeholder="Select year in school"
+            onChange={(value) => handleYearChange(value)}
+            value={year}
+            name="year"
           />
           <label htmlFor="stem">Stem scholarship</label>
           <input
