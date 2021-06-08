@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import Select from 'react-select'
-import './App.css';
-import Scholarship from './components/Scholarship'
+import Select from "react-select";
+import "./App.css";
+import Scholarship from "./components/Scholarship";
 
 // const YEAR_IN_SCHOOL_MAP = {
 //   "All": () => true,
@@ -17,65 +17,89 @@ import Scholarship from './components/Scholarship'
 const RESIDENCE_MAP = [
   { value: "yes", label: "Yes" },
   { value: "no", label: "No" },
-]
+];
 
 const ESSAY_MAP = [
   { value: "yes", label: "Yes" },
   { value: "no", label: "No" },
-]
+];
 
 const TRANSCRIPT_MAP = [
   { value: "yes", label: "Yes" },
   { value: "no", label: "No" },
-]
-
+];
 
 function App({ scholarships }) {
-
   // const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
-  const [ residency, setResidency] = useState();
-  const [ essay, setEssay ] = useState();
-  const [ transcript, setTranscript ] = useState();
+  const [residency, setResidency] = useState();
+  const [essay, setEssay] = useState();
+  const [transcript, setTranscript] = useState();
+  const [stem, setStem] = useState(null);
 
-  const scholarshipList = scholarships.filter( scholarship => !residency ? scholarship : scholarship.texas_resident === residency.value ).filter( scholarship => !essay ? scholarship : scholarship.essays === essay.value ).filter( scholarship => !transcript ? scholarship : scholarship.transcripts === transcript.value ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
+  const scholarshipList = scholarships
+    .filter( (scholarship) =>
+      !stem ?  scholarship : scholarship.stem == stem
+    )
+    .filter((scholarship) =>
+      !residency ? scholarship : scholarship.texas_resident === residency.value
+    )
+    .filter((scholarship) =>
+      !essay ? scholarship : scholarship.essays === essay.value
+    )
+    .filter((scholarship) =>
+      !transcript ? scholarship : scholarship.transcripts === transcript.value
+    )
+    .map((scholarship, index) => (
+      <Scholarship key={index} scholarship={scholarship} />
+    ));
 
   // const handleYearChange = (e) => {
   //   setYearInSchoolFilter(e.target.value)
   // }
 
-  console.log(scholarships)
+  console.log(scholarships);
 
   const handleResidenceChange = (value) => {
-    if(value != null) {
-      setResidency(value)
+    if (value != null) {
+      setResidency(value);
     } else {
-      setResidency(null)
+      setResidency(null);
     }
-  }
+  };
 
   const handleEssayChange = (value) => {
-    if(value != null) {
-      setEssay(value)
+    if (value != null) {
+      setEssay(value);
     } else {
-      setEssay(null)
+      setEssay(null);
     }
-  }
+  };
 
   const handleTranscriptChange = (value) => {
-    if(value != null) {
-      setTranscript(value)
+    if (value != null) {
+      setTranscript(value);
     } else {
-      setTranscript(null)
+      setTranscript(null);
     }
-  }
+  };
+
+  const handleStemChange = (e) => {
+    if(e.target.checked == true){
+      setStem(true)
+    } else {
+      setStem(null)
+    }
+  };
 
   const resetAll = (e) => {
-    e.preventDefault()
-    setResidency(null)
-    setEssay(null)
-    setTranscript(null)
+    e.preventDefault();
+    setResidency(null);
+    setEssay(null);
+    setTranscript(null);
+    setStem(false);
+    document.getElementById("stem").checked = false;
     // setSearchQuery("")
-  }
+  };
 
   return (
     <>
@@ -87,7 +111,7 @@ function App({ scholarships }) {
             options={RESIDENCE_MAP}
             isClearable={true}
             placeholder="Select residency status"
-            onChange={value => handleResidenceChange(value)}
+            onChange={(value) => handleResidenceChange(value)}
             value={residency}
             name="residency"
           />
@@ -96,7 +120,7 @@ function App({ scholarships }) {
             options={ESSAY_MAP}
             isClearable={true}
             placeholder="Is an essay required?"
-            onChange={value => handleEssayChange(value)}
+            onChange={(value) => handleEssayChange(value)}
             value={essay}
             name="essay"
           />
@@ -105,7 +129,7 @@ function App({ scholarships }) {
             options={TRANSCRIPT_MAP}
             isClearable={true}
             placeholder="Transcript required?"
-            onChange={value => handleTranscriptChange(value)}
+            onChange={(value) => handleTranscriptChange(value)}
             value={transcript}
             name="transcript"
           />
@@ -114,6 +138,7 @@ function App({ scholarships }) {
             type="checkbox"
             id="stem"
             value="stem"
+            onClick={handleStemChange}
           />
           <button onClick={resetAll}>Reset</button>
         </form>
