@@ -37,7 +37,7 @@ function App({ scholarships }) {
 
   const scholarshipList = scholarships
     .filter( (scholarship) =>
-      !stem ?  scholarship : scholarship.stem == stem
+      !stem ?  scholarship : scholarship.stem === stem
     )
     .filter((scholarship) =>
       !residency ? scholarship : scholarship.texas_resident === residency.value
@@ -57,8 +57,6 @@ function App({ scholarships }) {
     .map((scholarship, index) => (
       <Scholarship key={index} scholarship={scholarship} />
     ));
-
-  console.log(scholarships);
 
   const handleResidenceChange = (value) => {
     if (value != null) {
@@ -93,7 +91,7 @@ function App({ scholarships }) {
   };
 
   const handleStemChange = (e) => {
-    if(e.target.checked == true){
+    if(e.target.checked === true){
       setStem(true)
     } else {
       setStem(null)
