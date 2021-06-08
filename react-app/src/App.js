@@ -33,6 +33,7 @@ function App({ scholarships }) {
   const [transcript, setTranscript] = useState();
   const [year, setYear] = useState();
   const [stem, setStem] = useState(null);
+  const [searchquery, setSearchQuery] = useState("");
 
   const scholarshipList = scholarships
     .filter( (scholarship) =>
@@ -49,6 +50,9 @@ function App({ scholarships }) {
     )
     .filter((scholarship) =>
       !year ? scholarship : scholarship.year_in_school.includes( year.value )
+    )
+    .filter( (scholarship) =>
+      scholarship.keywords.toLowerCase().indexOf(searchquery) > -1
     )
     .map((scholarship, index) => (
       <Scholarship key={index} scholarship={scholarship} />
@@ -104,13 +108,15 @@ function App({ scholarships }) {
     setYear(null);
     setStem(null);
     document.getElementById("stem").checked = false;
-    // setSearchQuery("")
+    setSearchQuery("")
   };
 
   return (
     <>
       <section className="ut-scholarship--grid">
         <form className="ut-scholarships--grid-form">
+        <label htmlFor="searchquery">Search</label>
+        <input type="text" id="searchquery" placeholder="Enter search term" value={searchquery} onChange={(e) => setSearchQuery(e.target.value)}/>
           <label htmlFor="residency">Residency</label>
           <Select
             options={RESIDENCE_MAP}
