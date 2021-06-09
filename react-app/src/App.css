@@ -1,7 +1,7 @@
 .ut-scholarship--grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+  grid-gap: 2em;
 }
 
 .ut-scholarship--card h3 {
