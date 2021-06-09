@@ -117,7 +117,9 @@ function App({ scholarships }) {
         <div>
           {scholarshipList.length > 0 ? (
             <>
-              {scholarshipList}
+              <div className="ut-scholarship--grid-results">
+                {scholarshipList}
+              </div>
               <Pagination
                 perPage={perPage}
                 totalScholarships={scholarships.length}

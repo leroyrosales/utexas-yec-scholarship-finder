@@ -1,5 +1,16 @@
 .ut-scholarship--grid {
   display: grid;
+  grid-gap: 2em;
+}
+
+@media (min-width: 800px) {
+  .ut-scholarship--grid {
+    grid-template-columns: 325px 1fr;
+  }
+}
+
+.ut-scholarship--grid-results {
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
   grid-gap: 2em;
 }
