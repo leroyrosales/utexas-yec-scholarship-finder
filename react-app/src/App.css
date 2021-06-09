@@ -52,6 +52,7 @@
 
 .ut-scholarships--grid-form label ~ div {
   margin: .25rem 0 1rem 0;
+  font-size: 1.5rem;
 }
 
 .ut-scholarships--grid-form label ~ input {
@@ -89,7 +90,7 @@
   box-sizing: border-box;
   padding: 2px 8px;
   width: 100%;
-  font-size: inherit;
+  font-size: 1.5rem;
   font-weight: 500;
   font-family: inherit;
 }
