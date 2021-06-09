@@ -1,25 +1,22 @@
 {
   "files": {
-    "main.css": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/main.c967c44f.chunk.css",
-    "main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.eba0537d.chunk.js",
-    "main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.eba0537d.chunk.js.map",
-    "runtime-main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.5e65c5a1.js",
-    "runtime-main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.5e65c5a1.js.map",
-    "static/css/2.150d169a.chunk.css": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/2.150d169a.chunk.css",
-    "static/js/2.db74300f.chunk.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.db74300f.chunk.js",
-    "static/js/2.db74300f.chunk.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.db74300f.chunk.js.map",
-    "static/js/3.b5828715.chunk.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/3.b5828715.chunk.js",
-    "static/js/3.b5828715.chunk.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/3.b5828715.chunk.js.map",
+    "main.css": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/main.f9137f84.chunk.css",
+    "main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.241a97c8.chunk.js",
+    "main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.241a97c8.chunk.js.map",
+    "runtime-main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.a0370ae3.js",
+    "runtime-main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.a0370ae3.js.map",
+    "static/js/2.f105422d.chunk.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.f105422d.chunk.js",
+    "static/js/2.f105422d.chunk.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.f105422d.chunk.js.map",
+    "static/js/3.c20e63a6.chunk.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/3.c20e63a6.chunk.js",
+    "static/js/3.c20e63a6.chunk.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/3.c20e63a6.chunk.js.map",
     "index.html": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/index.html",
-    "static/css/2.150d169a.chunk.css.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.c967c44f.chunk.css.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/main.c967c44f.chunk.css.map",
-    "static/js/2.db74300f.chunk.js.LICENSE.txt": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.db74300f.chunk.js.LICENSE.txt"
+    "static/css/main.f9137f84.chunk.css.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/main.f9137f84.chunk.css.map",
+    "static/js/2.f105422d.chunk.js.LICENSE.txt": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.f105422d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5e65c5a1.js",
-    "static/css/2.150d169a.chunk.css",
-    "static/js/2.db74300f.chunk.js",
-    "static/css/main.c967c44f.chunk.css",
-    "static/js/main.eba0537d.chunk.js"
+    "static/js/runtime-main.a0370ae3.js",
+    "static/js/2.f105422d.chunk.js",
+    "static/css/main.f9137f84.chunk.css",
+    "static/js/main.241a97c8.chunk.js"
   ]
 }

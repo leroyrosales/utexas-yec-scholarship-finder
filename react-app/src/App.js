@@ -1,90 +1,137 @@
 import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from 'react-bootstrap/Form';
-import './App.css';
-import Scholarship from './components/Scholarship'
-import YearInSchool from './components/YearInSchool'
-import RequiresResidency from './components/RequiresResidency'
-import RequiresEssay from './components/RequiresEssay'
-import RequiresTranscript from './components/RequiresTranscript'
 
-// const YEAR_IN_SCHOOL_MAP = {
-//   "All": () => true,
-//   "Incoming Freshman": scholarship => scholarship.year_in_school.includes( "incoming_freshman" ),
-//   "Incoming Transfer": scholarship => scholarship.year_in_school.includes( "incoming_transfer" ),
-//   "Entering Transfer": scholarship => scholarship.year_in_school.includes( "entering_transfer" ),
-//   "Externally Selected": scholarship => scholarship.year_in_school.includes( "externally_selected" ),
-//   "Continuing Students": scholarship => scholarship.year_in_school.includes( "continuing_students" ),
-//   "Graduate Students": scholarship => scholarship.year_in_school.includes( "graduate_students" )
-// }
-
-const RESIDENCE_MAP = {
-  "All": () => true,
-  "Yes": scholarship => scholarship.texas_resident.includes( "yes" ),
-  "No": scholarship => scholarship.texas_resident.includes( "no" ),
-}
-
-const ESSAY_MAP = {
-  "All": () => true,
-  "Yes": scholarship => scholarship.essays.includes( "yes" ),
-  "No": scholarship => scholarship.essays.includes( "no" ),
-}
-
-const TRANSCRIPT_MAP = {
-  "All": () => true,
-  "Yes": scholarship => scholarship.transcripts.includes( "yes" ),
-  "No": scholarship => scholarship.transcripts.includes( "no" ),
-}
-
-// Get the 'keys' of our filter map object
-// const YEAR_FILTERS = Object.keys(YEAR_IN_SCHOOL_MAP);
-const RESIDENCE_FILTERS = Object.keys(RESIDENCE_MAP);
-const ESSAY_FILTERS = Object.keys(ESSAY_MAP);
-const TRANSCRIPT_FILTERS = Object.keys(TRANSCRIPT_MAP);
-
+import "./App.css";
+import Scholarship from "./components/Scholarship";
+import ScholarshipFilters from "./components/ScholarshipFilters";
+import Pagination from "./components/Pagination";
 
 function App({ scholarships }) {
+  const [residency, setResidency] = useState();
+  const [essay, setEssay] = useState();
+  const [transcript, setTranscript] = useState();
+  const [year, setYear] = useState();
+  const [stem, setStem] = useState(null);
+  const [searchquery, setSearchQuery] = useState("");
 
-  // const [yearInSchoolFilter, setYearInSchoolFilter] = useState('All');
-  const [texasReisdenceFilter, setTexasResidenceFilter] = useState('All');
-  const [essayFilter, setEssayFilter] = useState('All');
-  const [transcriptFilter, setTranscriptFilter] = useState('All');
+  // Pagination
+  const [currentpage, setCurrentPage] = useState(1);
+  const [perPage] = useState(10);
 
-  const scholarshipList = scholarships.filter( RESIDENCE_MAP[texasReisdenceFilter] ).filter( ESSAY_MAP[essayFilter] ).filter( TRANSCRIPT_MAP[transcriptFilter] ).map((scholarship, index) => <Scholarship key={index} scholarship={scholarship}/>)
+  const indexOfLast = currentpage * perPage;
+  const indexOfFirst = indexOfLast - perPage;
 
-  // const handleYearChange = (e) => {
-  //   setYearInSchoolFilter(e.target.value)
-  // }
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const handleResidenceChange = (e) => {
-    setTexasResidenceFilter(e.target.value)
-  }
+  const scholarshipList = scholarships
+    .slice(indexOfFirst, indexOfLast)
+    .filter((scholarship) => (!stem ? scholarship : scholarship.stem === stem))
+    .filter((scholarship) =>
+      !residency ? scholarship : scholarship.texas_resident === residency.value
+    )
+    .filter((scholarship) =>
+      !essay ? scholarship : scholarship.essays === essay.value
+    )
+    .filter((scholarship) =>
+      !transcript ? scholarship : scholarship.transcripts === transcript.value
+    )
+    .filter((scholarship) =>
+      !year ? scholarship : scholarship.year_in_school.includes(year.value)
+    )
+    .filter(
+      (scholarship) =>
+        scholarship.keywords.toLowerCase().indexOf(searchquery) > -1
+    )
+    .map((scholarship, index) => (
+      <Scholarship key={index} scholarship={scholarship} />
+    ));
 
-  const handleEssayChange = (e) => {
-    setEssayFilter(e.target.value)
-  }
+  const handleResidenceChange = (value) => {
+    if (value != null) {
+      setResidency(value);
+    } else {
+      setResidency(null);
+    }
+  };
 
-  const handleTranscriptChange = (e) => {
-    setTranscriptFilter(e.target.value)
-  }
+  const handleEssayChange = (value) => {
+    if (value != null) {
+      setEssay(value);
+    } else {
+      setEssay(null);
+    }
+  };
+
+  const handleTranscriptChange = (value) => {
+    if (value != null) {
+      setTranscript(value);
+    } else {
+      setTranscript(null);
+    }
+  };
+
+  const handleYearChange = (value) => {
+    if (value != null) {
+      setYear(value);
+    } else {
+      setYear(null);
+    }
+  };
+
+  const handleStemChange = (e) => {
+    if (e.target.checked === true) {
+      setStem(true);
+    } else {
+      setStem(null);
+    }
+  };
+
+  const resetAll = (e) => {
+    e.preventDefault();
+    setResidency(null);
+    setEssay(null);
+    setTranscript(null);
+    setYear(null);
+    setStem(null);
+    document.getElementById("stem").checked = false;
+    setSearchQuery("");
+  };
 
   return (
-    <div className="row">
-      {/* <YearInSchool YEAR_FILTERS={YEAR_FILTERS} handleYearChange={handleYearChange} setYearInSchoolFilter={setYearInSchoolFilter}/> */}
-      <div className="col-12 col-md-3">
-        <Form>
-          <p className="h5 font-weight-bold text-uppercase mb-3">FILTER BY</p>
-          <RequiresResidency RESIDENCE_FILTERS={RESIDENCE_FILTERS} handleResidenceChange={handleResidenceChange} setTexasResidenceFilter={setTexasResidenceFilter}/>
-          <RequiresEssay ESSAY_FILTERS={ESSAY_FILTERS} handleEssayChange={handleEssayChange} setEssayFilter={setEssayFilter}/>
-          <RequiresTranscript TRANSCRIPT_FILTERS={TRANSCRIPT_FILTERS} handleTranscriptChange={handleTranscriptChange} setTranscriptFilter={setTranscriptFilter}/>
-        </Form>
-      </div>
-      <div className="col-12 col-md">
-        <div className="row">
-          {scholarshipList}
+    <>
+      <section className="ut-scholarship--grid">
+        <ScholarshipFilters
+          searchquery={searchquery}
+          setSearchQuery={setSearchQuery}
+          stem={stem}
+          year={year}
+          transcript={transcript}
+          essay={essay}
+          residency={residency}
+          handleResidenceChange={handleResidenceChange}
+          handleEssayChange={handleEssayChange}
+          handleTranscriptChange={handleTranscriptChange}
+          handleYearChange={handleYearChange}
+          handleStemChange={handleStemChange}
+          resetAll={resetAll}
+        />
+        <div>
+          {scholarshipList.length > 0 ? (
+            <>
+              <div className="ut-scholarship--grid-results">
+                {scholarshipList}
+              </div>
+              <Pagination
+                perPage={perPage}
+                totalScholarships={scholarships.length}
+                paginate={paginate}
+              />
+            </>
+          ) : (
+            <h2>Sorry, no results match that search</h2>
+          )}
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
 

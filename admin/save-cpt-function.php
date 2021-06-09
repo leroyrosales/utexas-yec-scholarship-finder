@@ -36,6 +36,8 @@ add_action( 'save_post_utexas_scholarships', function() {
                 'texas_resident' => get_field('texas_resident'),
                 'year_in_school' => get_field('year_in_school'),
                 'additional_info' => get_field('additional_info'),
+                'stem' => get_field('stem'),
+                'keywords' => get_field('keywords'),
             )
         );
 
