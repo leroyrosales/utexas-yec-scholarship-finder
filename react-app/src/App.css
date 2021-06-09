@@ -11,7 +11,7 @@
 
 .ut-scholarship--grid-results {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 2em;
 }
 
@@ -43,7 +43,7 @@
 /* Boostrap styles */
 .ut-scholarships--grid-form {
   background-color: #e6ebed;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .ut-scholarships--grid-form label {
@@ -65,8 +65,8 @@
   -ms-flex-align: center;
   align-items: center;
   background-color: hsl(0, 0%, 100%);
-  border-color: hsl(0, 0%, 80%);
-  border-radius: 4px;
+  border-color: #1f262b;
+  border-radius: 0;
   border-style: solid;
   border-width: 1px;
   cursor: default;
@@ -89,12 +89,13 @@
   box-sizing: border-box;
   padding: 2px 8px;
   width: 100%;
-  font-size: 1rem;
+  font-size: inherit;
   font-weight: 500;
+  font-family: inherit;
 }
 
 .ut-scholarships--grid-form #searchquery::placeholder  {
-  color: hsl(0, 0%, 50%);
+  color: #3e4549;
   margin-left: 2px;
   margin-right: 2px;
   position: absolute;
@@ -188,6 +189,15 @@ input[type="month"].form-control {
 select.form-control:focus::-ms-value {
   color: #495057;
   background-color: #fff;
+}
+
+.ut-scholarship--card {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #3e4549;
+  padding: 1.25rem;
 }
 
 /* Modal Boostrap styles */
@@ -407,7 +417,7 @@ select.form-control:focus::-ms-value {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 65ch;
     margin: 1.75rem auto;
   }
   .modal-dialog-scrollable {

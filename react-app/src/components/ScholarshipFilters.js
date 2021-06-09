@@ -37,6 +37,22 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
         />
         <label htmlFor="residency">Residency</label>
         <Select
+          theme={theme => ({
+            ...theme,
+            borderRadius: 0,
+            colors: {
+              ...theme.colors,
+              primary: '#bf5700',
+              primary25: '#f8971f',
+              primary50: '#bf5700',
+              neutral80: '#1f262b',
+              neutral70: '#1f262b',
+              neutral60: '#1f262b',
+              neutral50: '#3e4549',
+              neutral30: '#1f262b',
+              neutral20: '#1f262b',
+            },
+          })}
           options={RESIDENCE_MAP}
           isClearable={true}
           placeholder="Select residency status"
@@ -46,6 +62,22 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
         />
         <label htmlFor="essay">Essay</label>
         <Select
+          theme={theme => ({
+            ...theme,
+            borderRadius: 0,
+            colors: {
+              ...theme.colors,
+              primary: '#bf5700',
+              primary25: '#f8971f',
+              primary50: '#bf5700',
+              neutral80: '#1f262b',
+              neutral70: '#1f262b',
+              neutral60: '#1f262b',
+              neutral50: '#3e4549',
+              neutral30: '#1f262b',
+              neutral20: '#1f262b',
+            },
+          })}
           options={ESSAY_MAP}
           isClearable={true}
           placeholder="Is an essay required?"
@@ -55,6 +87,22 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
         />
         <label htmlFor="transcript">Transript</label>
         <Select
+          theme={theme => ({
+            ...theme,
+            borderRadius: 0,
+            colors: {
+              ...theme.colors,
+              primary: '#bf5700',
+              primary25: '#f8971f',
+              primary50: '#bf5700',
+              neutral80: '#1f262b',
+              neutral70: '#1f262b',
+              neutral60: '#1f262b',
+              neutral50: '#3e4549',
+              neutral30: '#1f262b',
+              neutral20: '#1f262b',
+            },
+          })}
           options={TRANSCRIPT_MAP}
           isClearable={true}
           placeholder="Transcript required?"
@@ -64,6 +112,22 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
         />
         <label htmlFor="year">Year in School</label>
         <Select
+          theme={theme => ({
+            ...theme,
+            borderRadius: 0,
+            colors: {
+              ...theme.colors,
+              primary: '#bf5700',
+              primary25: '#f8971f',
+              primary50: '#bf5700',
+              neutral80: '#1f262b',
+              neutral70: '#1f262b',
+              neutral60: '#1f262b',
+              neutral50: '#3e4549',
+              neutral30: '#1f262b',
+              neutral20: '#1f262b',
+            },
+          })}
           options={YEAR_IN_SCHOOL_MAP}
           isClearable={true}
           placeholder="Select year in school"
