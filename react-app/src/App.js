@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Scholarship from "./components/Scholarship";
 import ScholarshipFilters from "./components/ScholarshipFilters";
+import Pagination from "./components/Pagination";
 
 function App({ scholarships }) {
   const [residency, setResidency] = useState();
@@ -12,7 +13,17 @@ function App({ scholarships }) {
   const [stem, setStem] = useState(null);
   const [searchquery, setSearchQuery] = useState("");
 
+  // Pagination
+  const [currentpage, setCurrentPage] = useState(1);
+  const [perPage] = useState(10);
+
+  const indexOfLast = currentpage * perPage;
+  const indexOfFirst = indexOfLast - perPage;
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   const scholarshipList = scholarships
+    .slice(indexOfFirst, indexOfLast)
     .filter((scholarship) => (!stem ? scholarship : scholarship.stem === stem))
     .filter((scholarship) =>
       !residency ? scholarship : scholarship.texas_resident === residency.value
@@ -103,7 +114,20 @@ function App({ scholarships }) {
           handleStemChange={handleStemChange}
           resetAll={resetAll}
         />
-        {scholarshipList}
+        <div>
+          {scholarshipList.length > 0 ? (
+            <>
+              {scholarshipList}
+              <Pagination
+                perPage={perPage}
+                totalScholarships={scholarships.length}
+                paginate={paginate}
+              />
+            </>
+          ) : (
+            <h2>Sorry, no results match that search</h2>
+          )}
+        </div>
       </section>
     </>
   );

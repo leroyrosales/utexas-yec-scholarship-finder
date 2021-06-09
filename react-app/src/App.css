@@ -431,3 +431,44 @@ select.form-control:focus::-ms-value {
     max-width: 1140px;
   }
 }
+
+/* Pagination */
+.ut-pagination {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+.ut-pagination li {
+  line-height: 2.5rem;
+}
+
+.ut-pagination li+li {
+  margin-left: 5px
+}
+
+.ut-pagination li a {
+  border-radius: 2px;
+  color: #5e686e;
+  font-size: .875rem;
+  font-weight: 600;
+  padding: .5rem .75rem;
+  text-decoration: none
+}
+
+.ut-pagination li a:hover {
+  background: #e6ebed
+}
+
+.ut-pagination li.current a {
+  background: #bf5700;
+  color: #fff
+}
+
+.ut-pagination li.current a:hover {
+  background: #9d4700;
+  cursor: pointer
+}
+

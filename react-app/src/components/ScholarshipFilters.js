@@ -31,7 +31,7 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
         <input
           type="text"
           id="searchquery"
-          placeholder="Enter search term"
+          placeholder="Enter search keyword"
           value={searchquery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
