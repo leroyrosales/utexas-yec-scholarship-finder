@@ -299,6 +299,8 @@ add_action( 'init', function(){
 				'description' => '',
 
 		),
+	 );
+	 acf_add_local_field_group(
 		array(
 			'key' => 'group_60b7d2debd4bd',
 			'title' => 'Scholarship Sidebar',
