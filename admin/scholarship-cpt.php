@@ -38,8 +38,8 @@ add_action( 'init', function () {
                 'has_archive' => false,
                 'show_in_nav_menus' => false,
                 'rewrite' => false,
+                'menu_icon' => 'dashicons-money-alt',
         )
     );
-
 
 } );
