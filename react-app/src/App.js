@@ -26,20 +26,20 @@ function App({ scholarships }) {
     .slice(indexOfFirst, indexOfLast)
     .filter((scholarship) => (!stem ? scholarship : scholarship.stem === stem))
     .filter((scholarship) =>
-      !residency ? scholarship : scholarship.texas_resident === residency.value
+      !residency ? scholarship : scholarship.texas_resident[0] === residency.value
     )
     .filter((scholarship) =>
-      !essay ? scholarship : scholarship.essays === essay.value
+      !essay ? scholarship : scholarship.essays[0] === essay.value
     )
     .filter((scholarship) =>
-      !transcript ? scholarship : scholarship.transcripts === transcript.value
+      !transcript ? scholarship : scholarship.transcripts[0] === transcript.value
     )
     .filter((scholarship) =>
-      !year ? scholarship : scholarship.year_in_school.includes(year.value)
+      !year ? scholarship : scholarship.year_in_school[0].includes(year.value)
     )
     .filter(
       (scholarship) =>
-        scholarship.keywords.toLowerCase().indexOf(searchquery) > -1
+        scholarship.keywords[0].toLowerCase().indexOf(searchquery) > -1
     )
     .map((scholarship, index) => (
       <Scholarship key={index} scholarship={scholarship} />
@@ -79,7 +79,7 @@ function App({ scholarships }) {
 
   const handleStemChange = (e) => {
     if (e.target.checked === true) {
-      setStem(true);
+      setStem(e);
     } else {
       setStem(null);
     }

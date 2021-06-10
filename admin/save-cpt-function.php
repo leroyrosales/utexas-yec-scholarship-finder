@@ -11,21 +11,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action( 'updated_post_meta', function(){
     global $post;
 
-    $args = array(
+    $args = [
         'post_type' => 'utexas_scholarships',
         'post_status' => 'publish',
         'posts_per_page' => -1,
         'no_found_rows' => true,
         'update_post_term_cache' => false,
-    );
+    ];
 
     $query = new WP_Query($args);
-    $posts = array();
+    $posts = [];
 
     while ($query->have_posts()): $query->the_post();
         $posts[] = apply_filters(
             'utexas_yec_scholarship_fields',
-            array(
+            [
                 'title' => html_entity_decode(get_the_title(),ENT_QUOTES,'UTF-8'),
                 'information' => get_post_meta( $post->ID, 'information'),
                 'deadline' => get_post_meta( $post->ID, 'deadline'),
@@ -41,22 +41,24 @@ add_action( 'updated_post_meta', function(){
                 'additional_info' => get_post_meta( $post->ID, 'additional_info'),
                 'stem' => get_post_meta( $post->ID, 'stem'),
                 'keywords' => get_post_meta( $post->ID, 'keywords'),
-            )
+            ]
         );
 
     endwhile;
 
     wp_reset_query();
 
-    $data = json_encode($posts);
+    $data = json_encode( $posts );
 
-    if (!is_dir(ABSPATH . '/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/data/')) {
+    define( 'REACT_APP_PATH', '/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/data/' );
+
+    if (!is_dir(ABSPATH . REACT_APP_PATH )) {
         // If dir doesn't exist, make it
-        mkdir(ABSPATH . '/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/data/');
+        mkdir(ABSPATH . REACT_APP_PATH );
     }
 
     // Creates a scholarships json file in the uploads folder
-    file_put_contents( ABSPATH . '/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/data/data.json', $data);
+    file_put_contents( ABSPATH . REACT_APP_PATH . 'data.json', $data);
 
 }, 5 );
 

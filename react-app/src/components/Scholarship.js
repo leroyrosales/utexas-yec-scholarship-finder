@@ -5,6 +5,8 @@ import Modal from "react-bootstrap/Modal";
 export default function Scholarship({ scholarship }) {
   const [show, setShow] = useState(false);
 
+  console.log(scholarship)
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -36,71 +38,71 @@ export default function Scholarship({ scholarship }) {
               dangerouslySetInnerHTML={{ __html: scholarship.information }}
             ></div>
             <ul>
-              {scholarship.deadline ? (
+              {scholarship.deadline[0] ? (
                 <li>
                   <strong>Deadline:</strong>
-                  <br /> {scholarship.deadline}
+                  <br /> {scholarship.deadline[0]}
                 </li>
               ) : null}
-              {scholarship.website ? (
+              {scholarship.website[0] ? (
                 <li>
                   <strong>Site:</strong>{" "}
                   <a
                     target="_blank"
-                    href={scholarship.website}
+                    href={scholarship.website[0]}
                     rel="noindex, nofollow, noreferrer"
                   >
                     <br />
-                    {scholarship.website}
+                    {scholarship.website[0]}
                   </a>
                 </li>
               ) : null}
-              {scholarship.application_online_or_paper ? (
+              {scholarship.application_online_or_paper[0] ? (
                 <li>
                   <strong>Application (online or paper):</strong>
                   <br />
-                  {capitalize(scholarship.application_online_or_paper)}
+                  {capitalize(scholarship.application_online_or_paper[0])}
                 </li>
               ) : null}
-              {scholarship.essays ? (
+              {scholarship.essays[0] ? (
                 <li>
                   <strong>Essay required?:</strong>
-                  <br /> {capitalize(scholarship.essays)}
+                  <br /> {capitalize(scholarship.essays[0])}
                 </li>
               ) : null}
-              {scholarship.letters_of_recommendation ? (
+              {scholarship.letters_of_recommendation[0] ? (
                 <li>
                   <strong>Letter of recommendation?:</strong>
                   <br />
-                  {capitalize(scholarship.letters_of_recommendation)}
+                  {capitalize(scholarship.letters_of_recommendation[0])}
                 </li>
               ) : null}
-              {scholarship.no_of_awards ? (
+              {scholarship.no_of_awards[0] ? (
                 <li>
                   <strong>Number of awards offered:</strong>
                   <br />
-                  {scholarship.no_of_awards}
+                  {scholarship.no_of_awards[0]}
                 </li>
               ) : null}
-              {scholarship.texas_resident ? (
+              {scholarship.texas_resident[0] ? (
                 <li>
                   <strong>Requires Texas residency?:</strong>
                   <br />
-                  {capitalize(scholarship.texas_resident)}
+                  {capitalize(scholarship.texas_resident[0])}
                 </li>
               ) : null}
-              {scholarship.transcripts ? (
+              {scholarship.transcripts[0] ? (
                 <li>
                   <strong>Requires transcript?:</strong>
                   <br />
-                  {capitalize(scholarship.transcripts)}
+                  {capitalize(scholarship.transcripts[0])}
                 </li>
               ) : null}
-              {scholarship.additional_info ? (
+              {scholarship.additional_info[0] ? (
                 <div
                   className="ut-scholarship--card-add-info"
                   dangerouslySetInnerHTML={{
-                    __html: scholarship.additional_info,
+                    __html: scholarship.additional_info[0],
                   }}
                 ></div>
               ) : null}
