@@ -10,7 +10,7 @@ function App({ scholarships }) {
   const [essay, setEssay] = useState();
   const [transcript, setTranscript] = useState();
   const [year, setYear] = useState();
-  const [stem, setStem] = useState(null);
+  const [stem, setStem] = useState();
   const [searchquery, setSearchQuery] = useState("");
 
   // Pagination
@@ -24,7 +24,7 @@ function App({ scholarships }) {
 
   const scholarshipList = scholarships
     .slice(indexOfFirst, indexOfLast)
-    .filter((scholarship) => (!stem ? scholarship : scholarship.stem === stem))
+    .filter((scholarship) => (!stem ? scholarship : scholarship.stem[0] === stem ))
     .filter((scholarship) =>
       !residency ? scholarship : scholarship.texas_resident[0] === residency.value
     )
@@ -77,9 +77,12 @@ function App({ scholarships }) {
     }
   };
 
+  console.log(scholarships)
+
   const handleStemChange = (e) => {
+    console.log(e.target.checked)
     if (e.target.checked === true) {
-      setStem(e);
+      setStem("1");
     } else {
       setStem(null);
     }

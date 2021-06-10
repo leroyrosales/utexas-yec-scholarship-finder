@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/css/main.0540b9e2.chunk.css",
-    "main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.65f0c297.chunk.js",
-    "main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.65f0c297.chunk.js.map",
+    "main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.ca92c223.chunk.js",
+    "main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/main.ca92c223.chunk.js.map",
     "runtime-main.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.92e746e6.js",
     "runtime-main.js.map": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/runtime-main.92e746e6.js.map",
     "static/js/2.ba954cc4.chunk.js": "/wp-content/plugins/utexas-yec-scholarship-finder/react-app/build/static/js/2.ba954cc4.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.92e746e6.js",
     "static/js/2.ba954cc4.chunk.js",
     "static/css/main.0540b9e2.chunk.css",
-    "static/js/main.65f0c297.chunk.js"
+    "static/js/main.ca92c223.chunk.js"
   ]
 }

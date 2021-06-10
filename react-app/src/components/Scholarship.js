@@ -5,8 +5,6 @@ import Modal from "react-bootstrap/Modal";
 export default function Scholarship({ scholarship }) {
   const [show, setShow] = useState(false);
 
-  console.log(scholarship)
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

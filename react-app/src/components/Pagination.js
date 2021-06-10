@@ -10,7 +10,7 @@ export default function Pagination({ perPage, totalScholarships, paginate }) {
 
     return (
         <nav>
-            <ul class="ut-pagination">
+            <ul className="ut-pagination">
                 {pageNumbers.map(number => (
                     <li key={number}>
                         <a onClick={() => paginate(number)} href="!#">{number}</a>
