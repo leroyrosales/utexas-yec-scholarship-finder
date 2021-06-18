@@ -47,12 +47,12 @@
 }
 
 .ut-scholarships--grid-form label ~ div {
-  margin: .25rem 0 1rem 0;
+  margin: .25rem 0 1.5rem 0;
   font-size: 1.5rem;
 }
 
 .ut-scholarships--grid-form label ~ input {
-  margin: .25rem 0 1rem 0;
+  margin: .25rem 0 1.5rem 0;
   display: block;
 }
 
@@ -194,6 +194,10 @@ input[type="month"].form-control {
   text-indent: .15em;
   vertical-align: middle;
   width: 2rem;
+}
+
+.ut-scholarships--grid-form label~input[type="checkbox"] {
+  margin: .25rem 0 2rem;
 }
 
 .ut-scholarships--grid-form input[type="checkbox"]:checked::before {
@@ -481,10 +485,12 @@ select.form-control:focus::-ms-value {
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 0;
+  margin: 0;
 }
 
 .ut-pagination li {
   line-height: 2.5rem;
+  margin-left: 0;
 }
 
 .ut-pagination li+li {
