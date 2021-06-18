@@ -9,6 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Adds Custom Save Post Function
 add_action( 'updated_post_meta', function(){
+
+    // If editor view, return without querying
+    global $pagenow;
+
+    if (( $pagenow == 'post.php' )) {
+        return;
+    }
+
     global $post;
 
     $args = [
