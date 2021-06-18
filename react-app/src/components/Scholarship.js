@@ -36,10 +36,10 @@ export default function Scholarship({ scholarship }) {
               dangerouslySetInnerHTML={{ __html: scholarship.information }}
             ></div>
             <ul>
-              {scholarship.deadline[0] ? (
+              {scholarship.deadline ? (
                 <li>
                   <strong>Deadline:</strong>
-                  <br /> {scholarship.deadline[0]}
+                  <br /> {scholarship.deadline }
                 </li>
               ) : null}
               {scholarship.website[0] ? (

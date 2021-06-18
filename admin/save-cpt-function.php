@@ -10,12 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Adds Custom Save Post Function
 add_action( 'updated_post_meta', function(){
 
-    // If editor view, return without querying
-    global $pagenow;
-
-    if (( $pagenow == 'post.php' )) {
-        return;
-    }
 
     global $post;
 
@@ -30,13 +24,20 @@ add_action( 'updated_post_meta', function(){
     $query = new WP_Query($args);
     $posts = [];
 
+
+
     while ($query->have_posts()): $query->the_post();
+
+        $date = get_post_meta( $post->ID, "deadline", true );
+        $date = new DateTime($date);
+        $deadline =  $date->format('F j, Y');
+
         $posts[] = apply_filters(
             'utexas_yec_scholarship_fields',
             [
                 'title' => html_entity_decode(get_the_title(),ENT_QUOTES,'UTF-8'),
                 'information' => get_post_meta( $post->ID, 'information'),
-                'deadline' => get_post_meta( $post->ID, 'deadline'),
+                'deadline' => $deadline,
                 'amount' => get_post_meta( $post->ID, 'amount'),
                 'no_of_awards' => get_post_meta( $post->ID, 'no_of_awards'),
                 'website' => get_post_meta( $post->ID, 'website'),

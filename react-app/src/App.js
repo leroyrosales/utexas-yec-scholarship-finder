@@ -41,6 +41,10 @@ function App({ scholarships }) {
       (scholarship) =>
         scholarship.keywords[0].toLowerCase().indexOf(searchquery) > -1
     )
+    .sort((a,b) => {
+      return new Date(a.deadline).getTime() -
+          new Date(b.deadline).getTime()
+    })
     .map((scholarship, index) => (
       <Scholarship key={index} scholarship={scholarship} />
     ));
@@ -76,8 +80,6 @@ function App({ scholarships }) {
       setYear(null);
     }
   };
-
-  console.log(scholarships)
 
   const handleStemChange = (e) => {
     console.log(e.target.checked)
