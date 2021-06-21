@@ -42,15 +42,15 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
             borderRadius: 0,
             colors: {
               ...theme.colors,
-              primary: '#bf5700',
-              primary25: '#f8971f',
+              primary: '#1f262b',
+              primary25: '#F2F4F5',
               primary50: '#bf5700',
               neutral80: '#1f262b',
               neutral70: '#1f262b',
               neutral60: '#1f262b',
-              neutral50: '#3e4549',
+              neutral50: '#9CADB7',
               neutral30: '#1f262b',
-              neutral20: '#1f262b',
+              neutral20: '#9CADB7',
             },
           })}
           options={RESIDENCE_MAP}
@@ -67,15 +67,15 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
             borderRadius: 0,
             colors: {
               ...theme.colors,
-              primary: '#bf5700',
-              primary25: '#f8971f',
+              primary: '#1f262b',
+              primary25: '#F2F4F5',
               primary50: '#bf5700',
               neutral80: '#1f262b',
               neutral70: '#1f262b',
               neutral60: '#1f262b',
-              neutral50: '#3e4549',
+              neutral50: '#9CADB7',
               neutral30: '#1f262b',
-              neutral20: '#1f262b',
+              neutral20: '#9CADB7',
             },
           })}
           options={ESSAY_MAP}
@@ -92,15 +92,15 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
             borderRadius: 0,
             colors: {
               ...theme.colors,
-              primary: '#bf5700',
-              primary25: '#f8971f',
+              primary: '#1f262b',
+              primary25: '#F2F4F5',
               primary50: '#bf5700',
               neutral80: '#1f262b',
               neutral70: '#1f262b',
               neutral60: '#1f262b',
-              neutral50: '#3e4549',
+              neutral50: '#9CADB7',
               neutral30: '#1f262b',
-              neutral20: '#1f262b',
+              neutral20: '#9CADB7',
             },
           })}
           options={TRANSCRIPT_MAP}
@@ -117,15 +117,15 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
             borderRadius: 0,
             colors: {
               ...theme.colors,
-              primary: '#bf5700',
-              primary25: '#f8971f',
+              primary: '#1f262b',
+              primary25: '#F2F4F5',
               primary50: '#bf5700',
               neutral80: '#1f262b',
               neutral70: '#1f262b',
               neutral60: '#1f262b',
-              neutral50: '#3e4549',
+              neutral50: '#9CADB7',
               neutral30: '#1f262b',
-              neutral20: '#1f262b',
+              neutral20: '#9CADB7',
             },
           })}
           options={YEAR_IN_SCHOOL_MAP}
@@ -137,6 +137,7 @@ export default function ScholarshipFilters({ searchquery, setSearchQuery, year, 
         />
         <label htmlFor="stem">Stem scholarship</label>
         <input
+          className="ut-checkbox"
           type="checkbox"
           id="stem"
           value="stem"

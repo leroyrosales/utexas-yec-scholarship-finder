@@ -41,22 +41,18 @@
 }
 
 /* Boostrap styles */
-.ut-scholarships--grid-form {
-  background-color: #e6ebed;
-  padding: 2rem;
-}
-
 .ut-scholarships--grid-form label {
   font-weight: 600;
+  color: #333F48;
 }
 
 .ut-scholarships--grid-form label ~ div {
-  margin: .25rem 0 1rem 0;
+  margin: .25rem 0 1.5rem 0;
   font-size: 1.5rem;
 }
 
 .ut-scholarships--grid-form label ~ input {
-  margin: .25rem 0 1rem 0;
+  margin: .25rem 0 1.5rem 0;
   display: block;
 }
 
@@ -66,7 +62,7 @@
   -ms-flex-align: center;
   align-items: center;
   background-color: hsl(0, 0%, 100%);
-  border-color: #1f262b;
+  border-color: #9CADB7;
   border-radius: 0;
   border-style: solid;
   border-width: 1px;
@@ -96,7 +92,7 @@
 }
 
 .ut-scholarships--grid-form #searchquery::placeholder  {
-  color: #3e4549;
+  color: #9CADB7;
   margin-left: 2px;
   margin-right: 2px;
   position: absolute;
@@ -185,6 +181,34 @@ input[type="month"].form-control {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.ut-scholarships--grid-form input[type="checkbox"]::before {
+  background: #fff;
+  box-shadow: 0 0 0 1px #5e686e;
+  content: '\a0';
+  display: inline-block;
+  height: 2rem;
+  line-height: 2rem;
+  margin-right: .75em;
+  text-indent: .15em;
+  vertical-align: middle;
+  width: 2rem;
+}
+
+.ut-scholarships--grid-form label~input[type="checkbox"] {
+  margin: .25rem 0 2rem;
+}
+
+.ut-scholarships--grid-form input[type="checkbox"]:checked::before {
+  background-image: url(./assets/images/icons/checkmark.svg);
+  background-color: #bf5700;
+  box-shadow: 0 0 0 1px #bf5700;
+}
+
+.ut-scholarships--grid-form input[type="checkbox"]:checked::before, [type='checkbox']:checked:disabled+label::before {
+  background-position: 50%;
+  background-repeat: no-repeat;
 }
 
 select.form-control:focus::-ms-value {
@@ -461,10 +485,12 @@ select.form-control:focus::-ms-value {
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 0;
+  margin: 0;
 }
 
 .ut-pagination li {
   line-height: 2.5rem;
+  margin-left: 0;
 }
 
 .ut-pagination li+li {
