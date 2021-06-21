@@ -7,10 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 }
 
-// Adds Custom Save Post Function
-add_action( 'updated_post_meta', function(){
-
-
+function createsScholarshipsJson(){
     global $post;
 
     $args = [
@@ -23,8 +20,6 @@ add_action( 'updated_post_meta', function(){
 
     $query = new WP_Query($args);
     $posts = [];
-
-
 
     while ($query->have_posts()): $query->the_post();
 
@@ -68,8 +63,8 @@ add_action( 'updated_post_meta', function(){
 
     // Creates a scholarships json file in the uploads folder
     file_put_contents( ABSPATH . REACT_APP_PATH . 'data.json', $data);
+}
 
-}, 5 );
-
-
+// Adds Custom Save Post Function
+add_action( 'updated_post_meta', 'createsScholarshipsJson', 5 );
 
