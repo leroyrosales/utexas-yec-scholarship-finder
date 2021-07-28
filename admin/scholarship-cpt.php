@@ -42,4 +42,50 @@ add_action( 'init', function () {
         )
     );
 
+	/** Archive status for CPT **/
+    register_post_status( 'archive', array(
+        'label' => _x( 'Archived', 'utexas_scholarships' ),
+        'label_count' => _n_noop( 'Archived <span class="count">(%s)</span>', 'Archived <span
+        class="count">(%s)</span>'),
+        'public' => true,
+        'exclude_from_search' => false,
+        'show_in_admin_all_list' => true,
+        'show_in_admin_status_list' => true
+    ));
+
 } );
+
+
+function yec_add_archive_status() {
+
+    global $post;
+    if($post->post_type != 'utexas_scholarships')
+        return false;
+    $status = ($post->post_status == 'archive') ? "jQuery( '#post-status-display' ).text( 'Archive' ); jQuery('select[name=\"post_status\"]' ).val('archive');" : '';
+    echo "<script>jQuery(document).ready( function() {jQuery( 'select[name=\"post_status\"]' ).append( '<option value=\"archive\">Archive</option>' );".$status."});</script>";
+
+}
+add_action( 'post_submitbox_misc_actions', 'yec_add_archive_status');
+
+function yec_archive_status_quickedit() {
+
+    global $post;
+    if($post->post_type != 'utexas_scholarships')
+        return false;
+    echo "<script>jQuery(document).ready( function() {jQuery( 'select[name=\"_status\"]' ).append( '<option value=\"archive\">Archive</option>' );});</script>";
+
+}
+add_action('admin_footer-edit.php','yec_archive_status_quickedit');
+
+function yec_display_archive_status( $states ) {
+    global $post;
+    $arg = get_query_var( 'post_status' );
+    if($arg != 'archive'){
+        if($post->post_status == 'archive'){
+            echo "<script>jQuery(document).ready( function() {jQuery( '#post-status-display' ).text( 'Archive' );});</script>";
+            return array('Archived');
+        }
+    }
+    return $states;
+}
+add_filter( 'display_post_states', 'yec_display_archive_status' );
