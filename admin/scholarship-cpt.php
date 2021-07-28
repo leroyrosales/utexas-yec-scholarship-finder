@@ -1,4 +1,5 @@
-<?php // UTexas YEC Scholarship Finder - CPT
+<?php
+// UTexas YEC Scholarship Finder - CPT
 
 // Disable direct file access
 if ( ! defined( 'ABSPATH' ) ) {
@@ -7,15 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 }
 
-/**
- *
- * Adds Scholarships CPT
- *
- */
-
+ // Adds Scholarships CPT
 add_action( 'init', function () {
 
-	// FAQs
+	// Scholarships
     register_post_type('utexas_scholarships',
         array(
             'labels'      => array(
@@ -42,7 +38,7 @@ add_action( 'init', function () {
         )
     );
 
-	/** Archive status for CPT **/
+	// Archive status for CPT
     register_post_status( 'archive', array(
         'label' => _x( 'Archived', 'utexas_scholarships' ),
         'label_count' => _n_noop( 'Archived <span class="count">(%s)</span>', 'Archived <span
