@@ -45,3 +45,8 @@ code {
 .accordion .collapse.show {
   background-color: #fbfbf9;
 }
+
+.ut-scholarship--card-award-amt,
+.ut-scholarship--card-award-deadline  {
+  margin: 0;
+}
