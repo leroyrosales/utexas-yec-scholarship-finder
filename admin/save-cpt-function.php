@@ -39,7 +39,8 @@ function createsScholarshipsJson(){
                 [
                     'title' => html_entity_decode(get_the_title(),ENT_QUOTES,'UTF-8'),
                     'information' => get_post_meta( $post->ID, 'information'),
-                    'deadline' => $deadline,
+                    'deadline_string' => $deadline,
+                    'deadline_numeric' => get_post_meta( $post->ID, "deadline", true ),
                     'amount' => get_post_meta( $post->ID, 'amount'),
                     'no_of_awards' => get_post_meta( $post->ID, 'no_of_awards'),
                     'website' => get_post_meta( $post->ID, 'website'),

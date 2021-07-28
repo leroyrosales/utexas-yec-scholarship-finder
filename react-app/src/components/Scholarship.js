@@ -22,6 +22,11 @@ export default function Scholarship({ scholarship }) {
           Award amount: {scholarship.amount}
         </p>
       ) : null}
+              {scholarship.deadline_string ? (
+                <p className="ut-scholarship--card-award-deadline">
+                  <strong>Deadline:</strong> {scholarship.deadline_string }
+                </p>
+              ) : null}
       <Button variant="primary" onClick={handleShow}>
         Read scholarship info
       </Button>
@@ -36,12 +41,6 @@ export default function Scholarship({ scholarship }) {
               dangerouslySetInnerHTML={{ __html: scholarship.information }}
             ></div>
             <ul>
-              {scholarship.deadline ? (
-                <li>
-                  <strong>Deadline:</strong>
-                  <br /> {scholarship.deadline }
-                </li>
-              ) : null}
               {scholarship.website[0] ? (
                 <li>
                   <strong>Site:</strong>{" "}
