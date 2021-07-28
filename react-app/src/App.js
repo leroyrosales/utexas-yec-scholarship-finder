@@ -13,6 +13,11 @@ function App({ scholarships }) {
   const [stem, setStem] = useState();
   const [searchquery, setSearchQuery] = useState("");
 
+  const today = new Date();
+  const date = today.getFullYear()+("0" + (today.getMonth() + 1)).slice(-2)+today.getDate();
+
+  console.log(scholarships[0].deadline)
+
   // Pagination
   const [currentpage, setCurrentPage] = useState(1);
   const [perPage] = useState(10);
@@ -28,23 +33,24 @@ function App({ scholarships }) {
     .filter((scholarship) =>
       !residency ? scholarship : scholarship.texas_resident[0] === residency.value
     )
-    .filter((scholarship) =>
-      !essay ? scholarship : scholarship.essays[0] === essay.value
+    .filter(
+      (scholarship) => !essay ? scholarship : scholarship.essays[0] === essay.value
     )
     .filter((scholarship) =>
       !transcript ? scholarship : scholarship.transcripts[0] === transcript.value
     )
-    .filter((scholarship) =>
-      !year ? scholarship : scholarship.year_in_school[0].includes(year.value)
+    .filter(
+      (scholarship) => !year ? scholarship : scholarship.year_in_school[0].includes(year.value)
     )
     .filter(
-      (scholarship) =>
-        scholarship.keywords[0].toLowerCase().indexOf(searchquery) > -1
+      (scholarship) => scholarship.keywords[0].toLowerCase().indexOf(searchquery) > -1
     )
     .sort((a,b) => {
-      return new Date(a.deadline).getTime() -
-          new Date(b.deadline).getTime()
+      return new Date(a.deadline).getTime() - new Date(b.deadline).getTime()
     })
+    .filter(
+      (scholarship) => scholarship.deadline > date
+    )
     .map((scholarship, index) => (
       <Scholarship key={index} scholarship={scholarship} />
     ));

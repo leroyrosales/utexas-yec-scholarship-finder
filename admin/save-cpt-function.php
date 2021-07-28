@@ -30,16 +30,12 @@ function createsScholarshipsJson(){
 
         while ($query->have_posts()): $query->the_post();
 
-            $date = get_post_meta( $post->ID, "deadline", true );
-            $date = new DateTime($date);
-            $deadline =  $date->format('F j, Y');
-
             $posts[] = apply_filters(
                 'utexas_yec_scholarship_fields',
                 [
                     'title' => html_entity_decode(get_the_title(),ENT_QUOTES,'UTF-8'),
                     'information' => get_post_meta( $post->ID, 'information'),
-                    'deadline' => $deadline,
+                    'deadline' => get_post_meta( $post->ID, "deadline", true ),
                     'amount' => get_post_meta( $post->ID, 'amount'),
                     'no_of_awards' => get_post_meta( $post->ID, 'no_of_awards'),
                     'website' => get_post_meta( $post->ID, 'website'),
