@@ -22,9 +22,9 @@ export default function Scholarship({ scholarship }) {
           Award amount: {scholarship.amount}
         </p>
       ) : null}
-              {scholarship.deadline ? (
+              {scholarship.deadline_string ? (
                 <p className="ut-scholarship--card-award-deadline">
-                  <strong>Deadline:</strong> {scholarship.deadline }
+                  <strong>Deadline:</strong> {scholarship.deadline_string }
                 </p>
               ) : null}
       <Button variant="primary" onClick={handleShow}>

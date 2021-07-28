@@ -16,8 +16,6 @@ function App({ scholarships }) {
   const today = new Date();
   const date = today.getFullYear()+("0" + (today.getMonth() + 1)).slice(-2)+today.getDate();
 
-  console.log(scholarships[0].deadline)
-
   // Pagination
   const [currentpage, setCurrentPage] = useState(1);
   const [perPage] = useState(10);
@@ -46,10 +44,10 @@ function App({ scholarships }) {
       (scholarship) => scholarship.keywords[0].toLowerCase().indexOf(searchquery) > -1
     )
     .sort((a,b) => {
-      return new Date(a.deadline).getTime() - new Date(b.deadline).getTime()
+      return new Date(a.deadline_numeric).getTime() - new Date(b.deadline_numeric).getTime()
     })
     .filter(
-      (scholarship) => scholarship.deadline > date
+      (scholarship) => scholarship.deadline_numeric > date
     )
     .map((scholarship, index) => (
       <Scholarship key={index} scholarship={scholarship} />
