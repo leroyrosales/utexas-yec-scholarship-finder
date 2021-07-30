@@ -18,3 +18,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+react-app/build/data/data.json
+react-app/public/data/data.json

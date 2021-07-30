@@ -26,6 +26,7 @@ if ( is_admin() ) {
 	require_once UT_YEC_SCHOLARSHIP_FINDER . 'admin/save-cpt-function.php';
 	require_once UT_YEC_SCHOLARSHIP_FINDER . 'includes/acf/acf.php';
 	require_once UT_YEC_SCHOLARSHIP_FINDER . 'admin/acf-fields.php';
+	require_once UT_YEC_SCHOLARSHIP_FINDER . 'admin/export-csv.php';
 
 }
 
